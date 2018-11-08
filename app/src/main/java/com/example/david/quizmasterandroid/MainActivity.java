@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void setRightHanded(View firstButton) {
         isRightHanded = true;
-        Toast.makeText(this, "true", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Boolean.toString(isRightHanded), Toast.LENGTH_SHORT).show();
     }
 
     public void setLeftHanded(View firstButton) {
         isRightHanded = false;
-        Toast.makeText(this, "false", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Boolean.toString(isRightHanded), Toast.LENGTH_SHORT).show();
     }
 }

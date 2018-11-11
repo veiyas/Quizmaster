@@ -4,11 +4,16 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public boolean isRightHanded = true;
+    public static boolean getIsRightHanded() {
+        return isRightHanded;
+    }
+
+    public static boolean isRightHanded = true;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,18 +22,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void chooseHand(View view) {
-        Intent intent = new Intent(this, QuizOptionsActivity.class);
+        if(isRightHanded == true) {
+            Intent intent = new Intent(this, rightQuizOptions.class);
 
-        startActivity(intent);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, leftQuizOptions.class);
+
+            startActivity(intent);
+        }
     }
 
     public void setRightHanded(View firstButton) {
         isRightHanded = true;
-        Toast.makeText(this, Boolean.toString(isRightHanded), Toast.LENGTH_SHORT).show();
+
+        chooseHand(firstButton);
     }
 
     public void setLeftHanded(View firstButton) {
         isRightHanded = false;
-        Toast.makeText(this, Boolean.toString(isRightHanded), Toast.LENGTH_SHORT).show();
+
+        chooseHand(firstButton);
     }
 }

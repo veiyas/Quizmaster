@@ -4,4 +4,11 @@
     <string name="rightHanded">Högerhänt</string>
     <string name="right_left_handed">Är du höger- eller vänsterhänt?</string>
     <string name="welcome_text">Välkommen till appnamn!</string>
+    <string name="choose_categories">Välj 4 kategorier!</string>
+    <string name="category1">kategori 1</string>
+    <string name="category2">kategori 2</string>
+    <string name="category3">kategori 3</string>
+    <string name="category4">kategori 4</string>
+    <string name="category5">kategori5</string>
+    <string name="category6">kategori6</string>
 </resources>

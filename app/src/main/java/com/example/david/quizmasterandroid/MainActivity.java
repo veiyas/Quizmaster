@@ -7,10 +7,6 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static boolean getIsRightHanded() {
-        return isRightHanded;
-    }
-
     public static boolean isRightHanded = true;
 
 

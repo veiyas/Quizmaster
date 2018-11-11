@@ -5,10 +5,16 @@
     <string name="right_left_handed">Är du höger- eller vänsterhänt?</string>
     <string name="welcome_text">Välkommen till appnamn!</string>
     <string name="choose_categories">Välj 4 kategorier!</string>
-    <string name="category1">kategori 1</string>
-    <string name="category2">kategori 2</string>
-    <string name="category3">kategori 3</string>
-    <string name="category4">kategori 4</string>
-    <string name="category5">kategori5</string>
-    <string name="category6">kategori6</string>
+    <string name="cat1">kategori 1</string>
+    <string name="cat2">kategori 2</string>
+    <string name="cat3">kategori 3</string>
+    <string name="cat4">kategori 4</string>
+    <string name="cat5">kategori 5</string>
+    <string name="cat6">kategori 6</string>
+    <string name="cat1left">"     kategori 1"</string>
+    <string name="cat2left">"     kategori 2"</string>
+    <string name="cat3left">"     kategori 3"</string>
+    <string name="cat4left">"     kategori 4"</string>
+    <string name="cat5left">"     kategori 5"</string>
+    <string name="cat6left">"     kategori 6"</string>
 </resources>

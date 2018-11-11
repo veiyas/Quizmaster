@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">QuizmasterAndroid</string>
+    <string name="leftHanded">Vänsterhänt</string>
+    <string name="rightHanded">Högerhänt</string>
 </resources>

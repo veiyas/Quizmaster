@@ -23,7 +23,7 @@ public class leftQuizOptions extends AppCompatActivity {
 
     //Starta spel och skicka med vilka kategorier som har valts
     public void startTheGame(View view) {
-        Intent intent = new Intent(this, StartGame.class);
+        Intent intent = new Intent(this, StartGameActivity.class);
 
         ArrayList<Switch> theSwitches = new ArrayList<>();
         theSwitches.add((Switch) findViewById(R.id.switch1));
@@ -38,10 +38,11 @@ public class leftQuizOptions extends AppCompatActivity {
             if(!theSwitches.get(i).isChecked()) {
                 theSwitches.remove(theSwitches.get(i));
             }
-
-            //TODO skicka med de valda kategorierna m.h.a listan theSwitches
+        }
+        for(int i=0; i < 4; i++) {
+            intent.putExtra(theSwitches.get(i).getText().toString(), true);
         }
 
-
+        startActivity(intent);
     }
 }

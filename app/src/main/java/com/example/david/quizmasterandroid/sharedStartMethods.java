@@ -19,12 +19,12 @@ public class sharedStartMethods extends AppCompatActivity {
 
     public void startTheGame(View view, Activity theActivity) {
         ArrayList<Switch> theSwitches = new ArrayList<>();
-        theSwitches.add((Switch) findViewById(R.id.switch1));
-        theSwitches.add((Switch) findViewById(theContext.));
-        theSwitches.add((Switch) findViewById(R.id.switch3));
-        theSwitches.add((Switch) findViewById(R.id.switch4));
-        theSwitches.add((Switch) findViewById(R.id.switch5));
-        theSwitches.add((Switch) findViewById(R.id.switch6));
+        theSwitches.add((Switch) theActivity.findViewById(R.id.switch1));
+        theSwitches.add((Switch) theActivity.findViewById(R.id.switch3));
+        theSwitches.add((Switch) theActivity.findViewById(R.id.switch3));
+        theSwitches.add((Switch) theActivity.findViewById(R.id.switch4));
+        theSwitches.add((Switch) theActivity.findViewById(R.id.switch5));
+        theSwitches.add((Switch) theActivity.findViewById(R.id.switch6));
 
         ArrayList<Switch> falseSwitches = new ArrayList<>();
 

@@ -1,19 +1,15 @@
 package com.example.david.quizmasterandroid;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Switch;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-
-public class leftQuizOptions extends AppCompatActivity {
+public class leftQuizOptions extends AppCompatActivity implements View.OnClickListener {
 
     public final int maxCatsChosen = 4;
 
@@ -21,39 +17,23 @@ public class leftQuizOptions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_left_quiz_options);
+
+        TextView errorText = (TextView) findViewById(R.id.errorText);
+        errorText.setText("Du måste välja fyra kategorier!");
+        Button startButton = (Button) findViewById(R.id.startButton);
+        startButton.setClickable(false); startButton.setBackgroundColor(2);
     }
 
-    //Starta spel och skicka med vilka kategorier som har valts
-    public void startTheGame(View view) {
-        Intent intent = new Intent(leftQuizOptions.this, StartGameActivity.class);
-        sharedStartMethods start = new sharedStartMethods(intent);
-        start.startTheGame(view, leftQuizOptions.this);
 
-//        ArrayList<Switch> theSwitches = new ArrayList<>();
-//        theSwitches.add((Switch) findViewById(R.id.switch1));
-//        theSwitches.add((Switch) findViewById(R.id.switch2));
-//        theSwitches.add((Switch) findViewById(R.id.switch3));
-//        theSwitches.add((Switch) findViewById(R.id.switch4));
-//        theSwitches.add((Switch) findViewById(R.id.switch5));
-//        theSwitches.add((Switch) findViewById(R.id.switch6));
-//
-//        ArrayList<Switch> falseSwitches = new ArrayList<>();
-//
-//        for(int i=0; i < theSwitches.size(); i++) {
-//            if(!theSwitches.get(i).isChecked()) {
-//                falseSwitches.add(theSwitches.get(i));
-//            }
-//        }
-//
-//        for(int i=0; i < falseSwitches.size(); i++) {
-//            theSwitches.remove(falseSwitches.get(i));
-//        }
-//
-//        for(int i=0; i < maxCatsChosen; i++) {
-//            String catNumber = "cat" + Integer.toString(i+1);
-//            intent.putExtra(catNumber, theSwitches.get(i).getText());
-//        }
-//
-//        startActivity(intent);
+
+    //Start game
+    public void startTheGame(View view) {
+        Intent startIntent = new Intent(leftQuizOptions.this, StartGameActivity.class);
+
+        sharedPutCategoriesToStart start = new sharedPutCategoriesToStart(startIntent);
+
+        startIntent = start.putExtras(leftQuizOptions.this, startIntent);
+
+        startActivity(startIntent);
     }
 }

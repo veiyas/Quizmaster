@@ -11,4 +11,5 @@
     <string name="cat4">kategori 4</string>
     <string name="cat5">kategori 5</string>
     <string name="cat6">kategori 6</string>
+    <string name="start_game_button_text">Start</string>
 </resources>

@@ -9,18 +9,18 @@ import android.widget.Switch;
 
 import java.util.ArrayList;
 
-public class sharedStartMethods extends AppCompatActivity {
+public class sharedPutCategoriesToStart extends AppCompatActivity {
     public final int maxCatsChosen = 4;
     private Intent intent;
 
-    sharedStartMethods(Intent theIntent) {
-        intent = theIntent;
+    sharedPutCategoriesToStart(Intent input) {
+        intent = input;
     }
 
-    public void startTheGame(View view, Activity theActivity) {
+    public Intent putExtras(Activity theActivity, Intent intent) {
         ArrayList<Switch> theSwitches = new ArrayList<>();
         theSwitches.add((Switch) theActivity.findViewById(R.id.switch1));
-        theSwitches.add((Switch) theActivity.findViewById(R.id.switch3));
+        theSwitches.add((Switch) theActivity.findViewById(R.id.switch2));
         theSwitches.add((Switch) theActivity.findViewById(R.id.switch3));
         theSwitches.add((Switch) theActivity.findViewById(R.id.switch4));
         theSwitches.add((Switch) theActivity.findViewById(R.id.switch5));
@@ -43,6 +43,6 @@ public class sharedStartMethods extends AppCompatActivity {
             intent.putExtra(catNumber, theSwitches.get(i).getText());
         }
 
-        startActivity(intent);
+        return intent;
     }
 }

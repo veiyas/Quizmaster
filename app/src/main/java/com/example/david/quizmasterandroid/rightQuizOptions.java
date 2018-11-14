@@ -13,8 +13,13 @@ public class rightQuizOptions extends AppCompatActivity {
         setContentView(R.layout.activity_right_quiz_options);
     }
 
-    public void startTest(View view) {
-        Intent intent = new Intent(rightQuizOptions.this, StartGameActivity.class);
-        startActivity(intent);
+    public void startTheGame(View view) {
+        Intent startIntent = new Intent(rightQuizOptions.this, StartGameActivity.class);
+
+        sharedPutCategoriesToStart start = new sharedPutCategoriesToStart(startIntent);
+
+        startIntent = start.putExtras(rightQuizOptions.this, startIntent);
+
+        startActivity(startIntent);
     }
 }

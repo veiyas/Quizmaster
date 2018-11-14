@@ -23,23 +23,4 @@ public class StartGameActivity extends AppCompatActivity {
         TextView t3 = (TextView) findViewById(R.id.textView3); t3.setText(cat3);
         TextView t4 = (TextView) findViewById(R.id.textView4); t4.setText(cat4);
     }
-
-//    @Override
-//    protected void onResume()
-//    {
-//        super.onResume();
-//        catTest(cat1, cat2, cat3, cat4);
-//    }
-
-
-
-//    public void catTest(String c1, String c2, String c3, String c4) {
-//        TextView t1 = (TextView) findViewById(R.id.textView1); t1.setText(cat1);
-//        TextView t2 = (TextView) findViewById(R.id.textView2); t2.setText(cat2);
-//        TextView t3 = (TextView) findViewById(R.id.textView3); t3.setText(cat3);
-//        TextView t4 = (TextView) findViewById(R.id.textView4); t4.setText(cat4);
-//    }
-
-
-
 }

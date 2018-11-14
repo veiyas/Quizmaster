@@ -29,58 +29,58 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <Switch
-            android:layoutDirection="rtl"
             android:id="@+id/switch1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
             android:paddingLeft="30dp"
             android:paddingTop="15dp"
             android:paddingRight="40dp"
-            android:text="@string/cat1left"
+            android:text="@string/cat1"
             android:textSize="24sp" />
 
         <Switch
-            android:layoutDirection="rtl"
             android:id="@+id/switch2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
             android:paddingLeft="30dp"
             android:paddingTop="15dp"
             android:paddingRight="40dp"
-            android:text="@string/cat2left"
+            android:text="@string/cat2"
             android:textSize="24sp" />
 
         <Switch
-            android:layoutDirection="rtl"
             android:id="@+id/switch3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
             android:paddingLeft="30dp"
             android:paddingTop="15dp"
             android:paddingRight="40dp"
-            android:text="@string/cat3left"
+            android:text="@string/cat3"
             android:textSize="24sp" />
 
         <Switch
-            android:layoutDirection="rtl"
             android:id="@+id/switch4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
             android:paddingLeft="30dp"
             android:paddingTop="15dp"
             android:paddingRight="40dp"
-            android:text="@string/cat4left"
+            android:text="@string/cat4"
             android:textSize="24sp" />
 
         <Switch
-            android:layoutDirection="rtl"
             android:id="@+id/switch5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
             android:paddingLeft="30dp"
             android:paddingTop="15dp"
             android:paddingRight="40dp"
-            android:text="@string/cat5left"
+            android:text="@string/cat5"
             android:textSize="24sp" />
 
         <Switch
@@ -91,7 +91,7 @@
             android:paddingLeft="30dp"
             android:paddingTop="15dp"
             android:paddingRight="40dp"
-            android:text="@string/cat6left"
+            android:text="@string/cat6"
             android:textSize="24sp" />
     </LinearLayout>
 

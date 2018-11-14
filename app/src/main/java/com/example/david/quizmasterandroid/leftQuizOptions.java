@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class leftQuizOptions extends AppCompatActivity {
 
-    LinearLayout L = (LinearLayout) findViewById(R.id.thelayout);
-    private int numSwitches = L.getChildCount();
+    public final int maxCatsChosen = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class leftQuizOptions extends AppCompatActivity {
 
     //Starta spel och skicka med vilka kategorier som har valts
     public void startTheGame(View view) {
-        Intent intent = new Intent(this, StartGameActivity.class);
+        Intent intent = new Intent(leftQuizOptions.this, StartGameActivity.class);
 
         ArrayList<Switch> theSwitches = new ArrayList<>();
         theSwitches.add((Switch) findViewById(R.id.switch1));
@@ -33,14 +33,21 @@ public class leftQuizOptions extends AppCompatActivity {
         theSwitches.add((Switch) findViewById(R.id.switch5));
         theSwitches.add((Switch) findViewById(R.id.switch6));
 
+        ArrayList<Switch> falseSwitches = new ArrayList<>();
 
-        for(int i=0; i < numSwitches; i++) {
+        for(int i=0; i < theSwitches.size(); i++) {
             if(!theSwitches.get(i).isChecked()) {
-                theSwitches.remove(theSwitches.get(i));
+                falseSwitches.add(theSwitches.get(i));
             }
         }
-        for(int i=0; i < 4; i++) {
-            intent.putExtra(theSwitches.get(i).getText().toString(), true);
+
+        for(int i=0; i < falseSwitches.size(); i++) {
+            theSwitches.remove(falseSwitches.get(i));
+        }
+
+        for(int i=0; i < maxCatsChosen; i++) {
+            String catNumber = "cat" + Integer.toString(i+1);
+            intent.putExtra(catNumber, theSwitches.get(i).getText());
         }
 
         startActivity(intent);

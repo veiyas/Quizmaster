@@ -1,8 +1,10 @@
 package com.example.david.quizmasterandroid;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -24,32 +26,34 @@ public class leftQuizOptions extends AppCompatActivity {
     //Starta spel och skicka med vilka kategorier som har valts
     public void startTheGame(View view) {
         Intent intent = new Intent(leftQuizOptions.this, StartGameActivity.class);
+        sharedStartMethods start = new sharedStartMethods(intent);
+        start.startTheGame(view, leftQuizOptions.this);
 
-        ArrayList<Switch> theSwitches = new ArrayList<>();
-        theSwitches.add((Switch) findViewById(R.id.switch1));
-        theSwitches.add((Switch) findViewById(R.id.switch2));
-        theSwitches.add((Switch) findViewById(R.id.switch3));
-        theSwitches.add((Switch) findViewById(R.id.switch4));
-        theSwitches.add((Switch) findViewById(R.id.switch5));
-        theSwitches.add((Switch) findViewById(R.id.switch6));
-
-        ArrayList<Switch> falseSwitches = new ArrayList<>();
-
-        for(int i=0; i < theSwitches.size(); i++) {
-            if(!theSwitches.get(i).isChecked()) {
-                falseSwitches.add(theSwitches.get(i));
-            }
-        }
-
-        for(int i=0; i < falseSwitches.size(); i++) {
-            theSwitches.remove(falseSwitches.get(i));
-        }
-
-        for(int i=0; i < maxCatsChosen; i++) {
-            String catNumber = "cat" + Integer.toString(i+1);
-            intent.putExtra(catNumber, theSwitches.get(i).getText());
-        }
-
-        startActivity(intent);
+//        ArrayList<Switch> theSwitches = new ArrayList<>();
+//        theSwitches.add((Switch) findViewById(R.id.switch1));
+//        theSwitches.add((Switch) findViewById(R.id.switch2));
+//        theSwitches.add((Switch) findViewById(R.id.switch3));
+//        theSwitches.add((Switch) findViewById(R.id.switch4));
+//        theSwitches.add((Switch) findViewById(R.id.switch5));
+//        theSwitches.add((Switch) findViewById(R.id.switch6));
+//
+//        ArrayList<Switch> falseSwitches = new ArrayList<>();
+//
+//        for(int i=0; i < theSwitches.size(); i++) {
+//            if(!theSwitches.get(i).isChecked()) {
+//                falseSwitches.add(theSwitches.get(i));
+//            }
+//        }
+//
+//        for(int i=0; i < falseSwitches.size(); i++) {
+//            theSwitches.remove(falseSwitches.get(i));
+//        }
+//
+//        for(int i=0; i < maxCatsChosen; i++) {
+//            String catNumber = "cat" + Integer.toString(i+1);
+//            intent.putExtra(catNumber, theSwitches.get(i).getText());
+//        }
+//
+//        startActivity(intent);
     }
 }

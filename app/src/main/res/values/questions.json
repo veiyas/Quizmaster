@@ -1,0 +1,134 @@
+{
+	"Kultur": [
+	{
+		"question": "Vem har regisserat Mean Girls?",
+		"answers": {
+			"answer_1": "Mark Waters",
+			"answer_2": "Taikia Waititi",
+			"answer_3": "Denis Villeneuve",
+			"answer_4": "Melanie Mayron"
+		},
+		"correct": "answer_1"
+	},
+	{
+		"question": "På vilken ö skrev August Strindberg boken Hemsöborna?",
+		"answers": {
+			"answer_1": "Saltkråkan",
+			"answer_2": "Riddarholmen",
+			"answer_3": "Kymmendö",
+			"answer_4": "Bildö"
+		},
+		"correct": "answer_3"
+	}
+	],
+	"Geografi": [
+	{
+		"question": "Vad heter Mongoliets huvudstad?",
+		"answers": {
+			"answer_1": "Kuala Lumpur",
+			"answer_2": "Ulan Bator",
+			"answer_3": "Bisjkek",
+			"answer_4": "Panama"
+		},
+		"correct": "answer_2"
+	},
+	{
+		"question": "Vilken är Sveriges fjärde största stad?",
+		"answers": {
+			"answer_1": "Linköping",
+			"answer_2": "Örebro",
+			"answer_3": "Västerås",
+			"answer_4": "Uppsala"
+		},
+		"correct": "answer_4"
+	}
+	],
+	"Naturvetenskap": [
+	{
+		"question": "Vad är ett annat ord för mjältbrand?",
+		"answers": {
+			"answer_1": "Aorta",
+			"answer_2": "Icterus",
+			"answer_3": "Lepra",
+			"answer_4": "Antrax"
+		},
+		"correct": "answer_4"
+	},
+	{
+		"question": "Vilken kemisk beteckning har tenn?",
+		"answers": {
+			"answer_1": "Sn",
+			"answer_2": "Tn",
+			"answer_3": "Si",
+			"answer_4": "Te"
+		},
+		"correct": "answer_1"
+	}
+	],
+	"Samhälle": [
+	{
+		"question": "Hur många ledamöter sitter i Sveriges riksdag?",
+		"answers": {
+			"answer_1": "347",
+			"answer_2": "349",
+			"answer_3": "149",
+			"answer_4": "249"
+		},
+		"correct": "answer_2"
+	},
+	{
+		"question": "Vem blev USA:s första dam 2016?",
+		"answers": {
+			"answer_1": "Ivana Trump",
+			"answer_2": "Michelle Obama",
+			"answer_3": "Melania Trump",
+			"answer_4": "Hillary Clinton"
+		},
+		"correct": "answer_3"
+	}
+	],
+	"Historia": [
+	{
+		"question": "När tillkom spårvagnsnätet i Norrköping?",
+		"answers": {
+			"answer_1": "1903",
+			"answer_2": "1904",
+			"answer_3": "1978",
+			"answer_4": "1899"
+		},
+		"correct": "answer_2"
+	},
+	{
+		"question": "Vilket år dog Stan Lee?",
+		"answers": {
+			"answer_1": "2018",
+			"answer_2": "2003",
+			"answer_3": "1991",
+			"answer_4": "1980"
+		},
+		"correct": "answer_1"
+	}
+	],
+	"Sport": [
+	{
+		"question": "I vilken stad hölls vinter-OS 1952?",
+		"answers": {
+			"answer_1": "Vancouver",
+			"answer_2": "Innsbruck",
+			"answer_3": "Oslo",
+			"answer_4": "Lillehammer"
+		},
+		"correct": "answer_3"
+	},
+	{
+		"question": "I hur många grenar tog Simone Biles guld under sommar-OS 2016",
+		"answers": {
+			"answer_1": "4",
+			"answer_2": "3",
+			"answer_3": "5",
+			"answer_4": "1"
+		},
+		"correct": "answer_1"
+	}
+	]
+}

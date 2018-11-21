@@ -32,8 +32,9 @@ public class StartGameActivity extends AppCompatActivity {
     Intent thisIntent = getIntent();
     ConstraintLayout main;
 
-    //Int för att bestämma vilken kategori som ska användas
+    //Ints för att bestämma vilken kategori och fråga som ska laddas
     int stageOfGame = 0;
+    int questionNum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,7 @@ public class StartGameActivity extends AppCompatActivity {
     //TODO Skapa metod som svarar på knapparnas actionlistener för att kontrollera om svaret är rätt eller fel och som även ger ++stageOfGame
 
     LinearLayout createQuestionLayout(int n) {
+        //TODO implementera användning av questionNum
         //Välj kategori beroende på n dvs vilket steg i spelet man är
         JSONArray theCatJSON;
         if(n == 0)

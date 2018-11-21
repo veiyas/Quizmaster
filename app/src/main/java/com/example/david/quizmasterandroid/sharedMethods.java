@@ -9,16 +9,17 @@ import android.widget.Switch;
 
 import java.util.ArrayList;
 
-public class sharedPutCategoriesToStart extends AppCompatActivity {
+public class sharedMethods extends AppCompatActivity {
     public final int maxCatsChosen = 4;
     private Intent intent;
 
-    sharedPutCategoriesToStart(Intent input) {
-        intent = input;
-    }
+    sharedMethods() {}
 
-    public Intent putExtras(Activity theActivity, Intent intent) {
+    public Intent putExtras(Activity theActivity, Intent putIntent) {
+        intent = putIntent;
         ArrayList<Switch> theSwitches = new ArrayList<>();
+
+        //Lägg till alla knappar i array
         theSwitches.add((Switch) theActivity.findViewById(R.id.switch1));
         theSwitches.add((Switch) theActivity.findViewById(R.id.switch2));
         theSwitches.add((Switch) theActivity.findViewById(R.id.switch3));
@@ -28,16 +29,19 @@ public class sharedPutCategoriesToStart extends AppCompatActivity {
 
         ArrayList<Switch> falseSwitches = new ArrayList<>();
 
+        //Lägg till knappar som ej är tryckta
         for(int i=0; i < theSwitches.size(); i++) {
             if(!theSwitches.get(i).isChecked()) {
                 falseSwitches.add(theSwitches.get(i));
             }
         }
 
+        //Ta bort knappar som ej är tryckta
         for(int i=0; i < falseSwitches.size(); i++) {
             theSwitches.remove(falseSwitches.get(i));
         }
 
+        //Lägg till strängar (kategorier) för de knappar som är tryckta
         for(int i=0; i < maxCatsChosen; i++) {
             String catNumber = "cat" + Integer.toString(i+1);
             intent.putExtra(catNumber, theSwitches.get(i).getText());

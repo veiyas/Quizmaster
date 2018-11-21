@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class rightQuizOptions extends AppCompatActivity {
@@ -66,7 +65,7 @@ public class rightQuizOptions extends AppCompatActivity {
     public void startTheGame(View view) {
         Intent startIntent = new Intent(rightQuizOptions.this, StartGameActivity.class);
 
-        sharedPutCategoriesToStart start = new sharedPutCategoriesToStart(startIntent);
+        sharedMethods start = new sharedMethods();
 
         startIntent = start.putExtras(rightQuizOptions.this, startIntent);
 

@@ -63,13 +63,11 @@ public class leftQuizOptions extends AppCompatActivity {
         }
     };
 
-
-
     //Start game
     public void startTheGame(View view) {
         Intent startIntent = new Intent(leftQuizOptions.this, StartGameActivity.class);
 
-        sharedPutCategoriesToStart start = new sharedPutCategoriesToStart(startIntent);
+        sharedMethods start = new sharedMethods();
 
         startIntent = start.putExtras(leftQuizOptions.this, startIntent);
 

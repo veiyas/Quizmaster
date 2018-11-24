@@ -8,7 +8,7 @@
 			"answer_3": "Denis Villeneuve",
 			"answer_4": "Melanie Mayron"
 		},
-		"correct": "answer_1"
+		"correct": "Mark Waters"
 	},
 	{
 		"question": "På vilken ö skrev August Strindberg boken Hemsöborna?",
@@ -18,7 +18,7 @@
 			"answer_3": "Kymmendö",
 			"answer_4": "Bildö"
 		},
-		"correct": "answer_3"
+		"correct": "Kymmendö"
 	}
 	],
 	"Geografi": [
@@ -30,7 +30,7 @@
 			"answer_3": "Bisjkek",
 			"answer_4": "Panama"
 		},
-		"correct": "answer_2"
+		"correct": "Ulan Bator"
 	},
 	{
 		"question": "Vilken är Sveriges fjärde största stad?",
@@ -40,7 +40,7 @@
 			"answer_3": "Västerås",
 			"answer_4": "Uppsala"
 		},
-		"correct": "answer_4"
+		"correct": "Uppsala"
 	}
 	],
 	"Naturvetenskap": [
@@ -52,7 +52,7 @@
 			"answer_3": "Lepra",
 			"answer_4": "Antrax"
 		},
-		"correct": "answer_4"
+		"correct": "Antrax"
 	},
 	{
 		"question": "Vilken kemisk beteckning har tenn?",
@@ -62,7 +62,7 @@
 			"answer_3": "Si",
 			"answer_4": "Te"
 		},
-		"correct": "answer_1"
+		"correct": "Sn"
 	}
 	],
 	"Samhälle": [
@@ -74,17 +74,17 @@
 			"answer_3": "149",
 			"answer_4": "249"
 		},
-		"correct": "answer_2"
+		"correct": "349"
 	},
 	{
 		"question": "Vem blev USA:s första dam 2016?",
 		"answers": {
-			"answer_1": "Ivana Trump",
+			"answer_1": "Ivanka Trump",
 			"answer_2": "Michelle Obama",
 			"answer_3": "Melania Trump",
 			"answer_4": "Hillary Clinton"
 		},
-		"correct": "answer_3"
+		"correct": "Melania Trump"
 	}
 	],
 	"Historia": [
@@ -96,7 +96,7 @@
 			"answer_3": "1978",
 			"answer_4": "1899"
 		},
-		"correct": "answer_2"
+		"correct": "1904"
 	},
 	{
 		"question": "Vilket år dog Stan Lee?",
@@ -106,7 +106,7 @@
 			"answer_3": "1991",
 			"answer_4": "1980"
 		},
-		"correct": "answer_1"
+		"correct": "2018"
 	}
 	],
 	"Sport": [
@@ -118,7 +118,7 @@
 			"answer_3": "Oslo",
 			"answer_4": "Lillehammer"
 		},
-		"correct": "answer_3"
+		"correct": "Oslo"
 	},
 	{
 		"question": "I hur många grenar tog Simone Biles guld under sommar-OS 2016",
@@ -128,7 +128,7 @@
 			"answer_3": "5",
 			"answer_4": "1"
 		},
-		"correct": "answer_1"
+		"correct": "4"
 	}
 	]
 }

@@ -1,6 +1,7 @@
 package com.example.david.quizmasterandroid;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
@@ -8,20 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.autofill.AutofillValue;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Timer;
-import java.util.concurrent.TimeUnit;
 
 public class StartGameActivity extends AppCompatActivity {
 
@@ -36,6 +35,16 @@ public class StartGameActivity extends AppCompatActivity {
     //Rotlayouten för att kunna ändra innehållet dynamiskt
     private ConstraintLayout main;
     private Button continueButton;
+
+    //Countdown
+    private CountDownTimer mCountDownTimer;
+    private CountDownTimer tension;
+
+    //Knappar
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
 
     //Begränsningar
     private final int questionPerSubject = 2;
@@ -54,6 +63,16 @@ public class StartGameActivity extends AppCompatActivity {
     private final int questionPerCat = 2;
     private int[] numCorrect = createNumCorrectArray();
 
+    //Kategori namn
+    private String cat1;
+    private String cat2;
+    private String cat3;
+    private String cat4;
+
+    //För att avsluta spelet och skicka med statistik
+    Intent finishGameIntent;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +80,10 @@ public class StartGameActivity extends AppCompatActivity {
 
         //Hämta kategorierna
         Bundle extras = getIntent().getExtras();
-        String cat1 = extras.getString("cat1");
-        String cat2 = extras.getString("cat2");
-        String cat3 = extras.getString("cat3");
-        String cat4 = extras.getString("cat4");
+        cat1 = extras.getString("cat1");
+        cat2 = extras.getString("cat2");
+        cat3 = extras.getString("cat3");
+        cat4 = extras.getString("cat4");
 
         //Ladda in alla frågor som ska användas från JSON
         try {
@@ -77,9 +96,24 @@ public class StartGameActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //TODO inte hårdkoda första skärmen, implementera dynamiskt användbar kategoripresentatör
+        presentCategory();
+    }
+
+    private void presentCategory() {
+        setContentView(R.layout.activity_start_game);
+
+        String subjectTitle;
+        if(subjectNum == 0)
+            subjectTitle = cat1;
+        else if(subjectNum == 1)
+            subjectTitle = cat2;
+        else if(subjectNum == 2)
+            subjectTitle = cat3;
+        else
+            subjectTitle = cat4;
+
         //Visa kategorinamnet
-        TextView catName = (TextView) findViewById(R.id.catName); catName.setText(cat1);
+        TextView catName = (TextView) findViewById(R.id.catName); catName.setText(subjectTitle);
         catName.setTextColor(Color.BLACK);
 
         //Lägg rotlayouten i en variabel som går att använda senare
@@ -115,38 +149,27 @@ public class StartGameActivity extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
 
-            //Skapa TextView objekt med frågan
-            final TextView questionText = new TextView(main.getContext());
+            //Skapa TextView objekt med frågan och egenskaper
+            final TextView questionText = new TextView(main.getContext()); questionText.setHeight(400);
             questionText.setText(theCatJSON.getJSONObject(questionNum).getString("question"));
-
-            //Egenskaper
-            questionText.setTextSize(28); questionText.setPadding(0,150,0,200);
+            questionText.setTextSize(27); questionText.setPadding(0,40,0,50);
             questionText.setGravity(Gravity.CENTER);
-
-            //Skapa en tabell (matris) med knappar
-            final TableLayout buttonCon = new TableLayout((main.getContext()));
-            buttonCon.setGravity(Gravity.CENTER); buttonCon.setPadding(0,200,0,0);
 
             //Skapa table rows
             final TableRow tableRow1 = new TableRow(main.getContext());
             tableRow1.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
-            tableRow1.setGravity(Gravity.CENTER);
+            tableRow1.setGravity(Gravity.CENTER); tableRow1.setWeightSum(100);
 
             final TableRow tableRow2 = new TableRow(main.getContext());
             tableRow2.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
-            tableRow2.setGravity(Gravity.CENTER);
+            tableRow2.setGravity(Gravity.CENTER); tableRow2.setWeightSum(100);
 
-            //Skapa knappar
-            Button button1 = new Button(buttonCon.getContext()); button1.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_1"));
-            Button button2 = new Button(buttonCon.getContext()); button2.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_2"));
-            Button button3 = new Button(buttonCon.getContext()); button3.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_3"));
-            Button button4 = new Button(buttonCon.getContext()); button4.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_4"));
+            //Skapa en tabell (matris) med knappar
+            final TableLayout buttonCon = new TableLayout((main.getContext()));
+            buttonCon.setGravity(Gravity.CENTER); buttonCon.setPadding(0,100,0,80);
 
-            //lägg till actionlistenter och ID för alla knappar
-            button1.setOnClickListener(questionCheck); button1.setId(1);
-            button2.setOnClickListener(questionCheck); button2.setId(2);
-            button3.setOnClickListener(questionCheck); button3.setId(3);
-            button4.setOnClickListener(questionCheck); button4.setId(4);
+            //Skapa alla knappar (button1, osv)
+            initializeAnswerButtons(theCatJSON);
 
             //Lägga knappar i 2 kolonner
             tableRow1.addView(button1);
@@ -159,28 +182,34 @@ public class StartGameActivity extends AppCompatActivity {
             buttonCon.addView(tableRow2);
 
             //Skapa nedräkningstext
-            countdown = new TextView(main.getContext());
-            countdown.setGravity(Gravity.CENTER); countdown.setTextSize(20); countdown.setPadding(0,50,0,0);
-//            new CountDownTimer(10000, 1000) {
-//
-//                public void onTick(long millisUntilFinished) {
-//                    if(!answerPressed)
-//                        countdown.setText("Tid kvar: " + millisUntilFinished / 1000);
-//                    else
-//                        countdown.setText(" ");
-//                }
-//                public void onFinish() {
-//                    if(!answerPressed)
-//                        countdown.setText("Tiden är ute!");
-//                    else
-//                        countdown.setText(" ");
-//                }
-//            }.start();
+            countdown = new TextView(main.getContext()); countdown.setHeight(280);
+            countdown.setGravity(Gravity.CENTER); countdown.setTextSize(20); countdown.setPadding(0,0,0,0);
+
+            mCountDownTimer = new CountDownTimer(10000,1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    countdown.setText("Tid kvar: " + (millisUntilFinished / 1000));
+                }
+                @Override
+                public void onFinish() {
+                    try {
+                        String correctAnswer = pickCategory(subjectNum).getJSONObject(questionNum).getString("correct");
+                        countdown.setText("Tiden är ute! \n Rätt svar är: \n" + correctAnswer);
+                        setButtonsClickable(false);
+                        labelIncorrectAnswer();
+                        continueTheGame();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            mCountDownTimer.start();
 
             //Skapa en "nästa fråga" knapp
             continueButton = new Button(c.getContext()); continueButton.setText("Nästa Fråga");
-            continueButton.setOnClickListener(nextQuestion);
-            continueButton.setVisibility(View.INVISIBLE);
+            continueButton.setOnClickListener(nextQuestion); continueButton.setGravity(Gravity.CENTER);
+            continueButton.setVisibility(View.INVISIBLE); continueButton.setHeight(300);
 
             //Lägg till alla object i linearlayout och sen i main ConstraintLayout
             c.addView(questionText, 0);
@@ -197,67 +226,142 @@ public class StartGameActivity extends AppCompatActivity {
 
     View.OnClickListener questionCheck = new View.OnClickListener() {
         public void onClick(final View v) {
+            //Stäng av timern för frågan
+            mCountDownTimer.cancel();
+            //Färga knappen gul
             answerPressed = true;
+            //Hämta valda svaret (knappen)
             final Button choice = findViewById(v.getId());
 
             //Skapa spänning med en timout
-            new CountDownTimer(2500, 10)
+            tension = new CountDownTimer(2500, 10)
             {
                 public void onTick(long millisUntilFinished) {
                     v.setBackgroundColor(Color.YELLOW);
+                    setButtonsClickable(false);
                 }
                 public void onFinish() {
                     if(correctAnswer(choice)) {
+                        countdown.setText("Rätt svar!");
                         v.setBackgroundColor(Color.GREEN);
-                        numCorrect[subjectNum]++;
+                        numCorrect[subjectNum] += 1;
                     } else {
                         v.setBackgroundColor(Color.RED);
+                        labelIncorrectAnswer();
                     }
-                    continueButton.setVisibility(View.VISIBLE);
 
-                    //Byt till nästa fråga
-                    ++questionNum;
-
-                    //KOlla om spelet är slut
-                    if(subjectNum == numberOfSubjects - 1 && questionNum == questionPerSubject) {
-                        //Starta ny aktivitet
-                        Toast.makeText(StartGameActivity.this, "slut", Toast.LENGTH_LONG).show();
-                        //TODO SKapa ny aktivitet för att avsluta spelet och visa statistik
-                    }
-                    //Kontrollera om kategorin måste bytas
-                    else if(questionNum == questionPerSubject) {
-                        subjectNum++;
-                        questionNum = 0;
-                        Toast.makeText(StartGameActivity.this, "subhectNum++", Toast.LENGTH_LONG).show();
-                    }
+                    continueTheGame();
                 }
-            }.start();
-        }
-
-        //Kontrollera om det var rätt svar
-        private boolean correctAnswer(Button id) {
-            try {
-                String correctAnswer = pickCategory(subjectNum).getJSONObject(questionNum).getString("correct");
-
-                if(id.getText().equals(correctAnswer))
-                    return true;
-                else
-                    return false;
-            }
-            catch (JSONException e) {
-                e.printStackTrace();
-                return false;
-            }
+            };
+            tension.start();
         }
     };
 
-    //TODO implementera kategoripresentationsskärm
+    private void labelIncorrectAnswer() {
+        String correctAnswer = null;
+        try {
+            correctAnswer = pickCategory(subjectNum).getJSONObject(questionNum).getString("correct");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(button1.getText().equals(correctAnswer))
+            button1.setBackgroundColor(Color.GREEN);
+        else if(button2.getText().equals(correctAnswer))
+            button2.setBackgroundColor(Color.GREEN);
+        else if(button3.getText().equals(correctAnswer))
+            button3.setBackgroundColor(Color.GREEN);
+        else if(button4.getText().equals(correctAnswer))
+            button4.setBackgroundColor(Color.GREEN);
+
+        countdown.setText("Tiden är ute! \n Rätt svar är: \n" + correctAnswer);
+    }
+
+    private void continueTheGame() {
+        continueButton.setVisibility(View.VISIBLE);
+
+        //Byt till nästa fråga
+        ++questionNum;
+
+        //TODO Debugga varför continuebutton knappen inte får rätt text (dvs varför denna if inte funkar)
+        if(subjectNum == numberOfSubjects - 1 && questionNum == questionPerSubject) {
+            continueButton.setText("Avsluta spelet");
+
+            finishGameIntent = new Intent(StartGameActivity.this, FinishedGame.class);
+            finishGameIntent.putExtra("statistics", numCorrect);
+        }
+
+        //Ändra text på continue button om kategorin ska bytas
+        if(questionNum == questionPerSubject)
+            continueButton.setText("Nästa kategori");
+    }
+
+    //Kontrollera om det var rätt svar
+    private boolean correctAnswer(Button id) {
+        try {
+            String correctAnswer = pickCategory(subjectNum).getJSONObject(questionNum).getString("correct");
+
+            if(id.getText().equals(correctAnswer))
+                return true;
+            else
+                return false;
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     View.OnClickListener nextQuestion = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            createQuestionLayout();
+            //KOlla om spelet är slut
+            if(subjectNum == numberOfSubjects - 1 && questionNum == questionPerSubject) {
+                startActivity(finishGameIntent);
+            }
+            else if(questionNum == questionPerSubject) {
+                subjectNum++;
+                questionNum = 0;
+                presentCategory();
+            }
+            else
+                createQuestionLayout();
         }
     };
+
+    @SuppressLint("ResourceType")
+    private void initializeAnswerButtons(JSONArray theCatJSON) throws JSONException {
+        //Skapa knappar
+        button1 = new Button(main.getContext()); button1.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_1"));
+        button2 = new Button(main.getContext()); button2.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_2"));
+        button3 = new Button(main.getContext()); button3.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_3"));
+        button4 = new Button(main.getContext()); button4.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_4"));
+
+        button1.setWidth(500); button2.setWidth(500); button3.setWidth(500); button4.setWidth(500);
+        button1.setHeight(200); button2.setHeight(200); button3.setHeight(200); button4.setHeight(200);
+
+        setButtonsClickable(true);
+
+        //lägg till actionlistenter och ID för alla knappar
+        button1.setOnClickListener(questionCheck); button1.setId(1);
+        button2.setOnClickListener(questionCheck); button2.setId(2);
+        button3.setOnClickListener(questionCheck); button3.setId(3);
+        button4.setOnClickListener(questionCheck); button4.setId(4);
+    }
+
+    private void setButtonsClickable(boolean c) {
+        if(c) {
+            button1.setClickable(true);
+            button2.setClickable(true);
+            button3.setClickable(true);
+            button4.setClickable(true);
+        }
+        else {
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+        }
+    }
 
     private JSONArray pickCategory(int n) {
         if(n == 0)

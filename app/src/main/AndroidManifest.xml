@@ -34,9 +34,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".StartGameActivity"
-                  android:parentActivityName=".MainActivity"
-            ></activity>
+        <activity
+            android:name=".StartGameActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".FinishedGame"></activity>
     </application>
 
 </manifest>

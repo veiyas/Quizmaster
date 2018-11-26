@@ -36,8 +36,11 @@
         </activity>
         <activity
             android:name=".StartGameActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".FinishedGame"></activity>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".FinishedGame"
+                  android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

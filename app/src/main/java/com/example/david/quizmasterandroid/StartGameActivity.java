@@ -9,24 +9,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.view.autofill.AutofillValue;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class StartGameActivity extends AppCompatActivity {
-
     //JSON grejer
-    private InputStream is;
-    private JSONObject reader;
     private JSONArray cat1json;
     private JSONArray cat2json;
     private JSONArray cat3json;
@@ -47,8 +43,14 @@ public class StartGameActivity extends AppCompatActivity {
     private Button button4;
 
     //Begränsningar
-    private final int questionPerSubject = 2;
-    private final int numberOfSubjects = 4;
+    public static final int questionPerSubject = 2;
+    public static final int numberOfSubjects = 4;
+    boolean gameIsDone = false;
+    boolean timeOut = false;
+
+    //Spåra statistik
+    private int[] numCorrect;
+    private int whichQuestion = 1;
 
     //Nedräknigstext
     private TextView countdown;
@@ -59,10 +61,6 @@ public class StartGameActivity extends AppCompatActivity {
     private int questionNum = 0;
     boolean endOfGame = false;
 
-    //Spåra statistik
-    private final int questionPerCat = 2;
-    private int[] numCorrect = createNumCorrectArray();
-
     //Kategori namn
     private String cat1;
     private String cat2;
@@ -71,7 +69,6 @@ public class StartGameActivity extends AppCompatActivity {
 
     //För att avsluta spelet och skicka med statistik
     Intent finishGameIntent;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +92,8 @@ public class StartGameActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        //Initialisera statistik array
+        numCorrect = createNumCorrectArray();
         presentCategory();
     }
 
@@ -133,6 +131,7 @@ public class StartGameActivity extends AppCompatActivity {
     public void createQuestionLayout() {
         //Initialisera main och answerPressed
         answerPressed = false;
+        timeOut = false;
         main.removeAllViews();
 
         //Välj kategori beroende på n dvs vilket steg i spelet man är
@@ -144,7 +143,7 @@ public class StartGameActivity extends AppCompatActivity {
             //Skapa linearlayout för skärmen
             c = new LinearLayout(main.getContext());
             c.setOrientation(LinearLayout.VERTICAL); c.setGravity(Gravity.CENTER);
-            c.setPadding(0, 200,0,0);
+            c.setPadding(0, 150,0,0);
             c.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -194,7 +193,7 @@ public class StartGameActivity extends AppCompatActivity {
                 public void onFinish() {
                     try {
                         String correctAnswer = pickCategory(subjectNum).getJSONObject(questionNum).getString("correct");
-                        countdown.setText("Tiden är ute! \n Rätt svar är: \n" + correctAnswer);
+                        timeOut = true;
                         setButtonsClickable(false);
                         labelIncorrectAnswer();
                         continueTheGame();
@@ -210,14 +209,21 @@ public class StartGameActivity extends AppCompatActivity {
             continueButton = new Button(c.getContext()); continueButton.setText("Nästa Fråga");
             continueButton.setOnClickListener(nextQuestion); continueButton.setGravity(Gravity.CENTER);
             continueButton.setVisibility(View.INVISIBLE); continueButton.setHeight(300);
+            continueButton.setPadding(0, 0, 0, 30);
+
+            //Vilken fråga du är på
+            TextView questionProgress = new TextView(main.getContext()); questionProgress.setGravity(Gravity.CENTER);
+            questionProgress.setText(whichQuestion + "/" + (questionPerSubject*numberOfSubjects)); questionProgress.setPadding(0,0,0,150);
 
             //Lägg till alla object i linearlayout och sen i main ConstraintLayout
-            c.addView(questionText, 0);
+            c.addView(questionProgress);
+            c.addView(questionText);
             c.addView(countdown);
             c.addView(buttonCon);
             c.addView(continueButton);
 
             main.addView(c);
+            ++whichQuestion;
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -228,8 +234,10 @@ public class StartGameActivity extends AppCompatActivity {
         public void onClick(final View v) {
             //Stäng av timern för frågan
             mCountDownTimer.cancel();
+
             //Färga knappen gul
             answerPressed = true;
+
             //Hämta valda svaret (knappen)
             final Button choice = findViewById(v.getId());
 
@@ -244,12 +252,25 @@ public class StartGameActivity extends AppCompatActivity {
                     if(correctAnswer(choice)) {
                         countdown.setText("Rätt svar!");
                         v.setBackgroundColor(Color.GREEN);
-                        numCorrect[subjectNum] += 1;
+                        numCorrect[subjectNum]++;
                     } else {
                         v.setBackgroundColor(Color.RED);
                         labelIncorrectAnswer();
                     }
 
+                    if(subjectNum == numberOfSubjects - 1 && questionNum == questionPerSubject - 1) {
+                        finishGameIntent = new Intent(StartGameActivity.this, FinishedGame.class);
+                        //Lägg till statistik om accuracy
+                        finishGameIntent.putExtra("statistics", numCorrect);
+
+                        //Kategorier för att avgöra vilken kategori som var bäst
+                        ArrayList<String> theCats = new ArrayList<>();
+                        theCats.add(0, cat1); theCats.add(1, cat2);theCats.add(2, cat3);theCats.add(3, cat4);
+                        finishGameIntent.putExtra("categories", theCats);
+
+                        continueButton.setText("Avsluta spelet");
+                        gameIsDone = true;
+                    }
                     continueTheGame();
                 }
             };
@@ -272,27 +293,21 @@ public class StartGameActivity extends AppCompatActivity {
             button3.setBackgroundColor(Color.GREEN);
         else if(button4.getText().equals(correctAnswer))
             button4.setBackgroundColor(Color.GREEN);
-
-        countdown.setText("Tiden är ute! \n Rätt svar är: \n" + correctAnswer);
+        if(timeOut)
+            countdown.setText("Tiden är ute! \n Rätt svar är: \n" + correctAnswer);
+        else
+            countdown.setText("Fel svar! \n Rätt svar är: \n" + correctAnswer);
     }
 
     private void continueTheGame() {
-        continueButton.setVisibility(View.VISIBLE);
-
         //Byt till nästa fråga
         ++questionNum;
 
-        //TODO Debugga varför continuebutton knappen inte får rätt text (dvs varför denna if inte funkar)
-        if(subjectNum == numberOfSubjects - 1 && questionNum == questionPerSubject) {
-            continueButton.setText("Avsluta spelet");
-
-            finishGameIntent = new Intent(StartGameActivity.this, FinishedGame.class);
-            finishGameIntent.putExtra("statistics", numCorrect);
-        }
-
         //Ändra text på continue button om kategorin ska bytas
-        if(questionNum == questionPerSubject)
+        if(questionNum == questionPerSubject && !gameIsDone)
             continueButton.setText("Nästa kategori");
+
+        continueButton.setVisibility(View.VISIBLE);
     }
 
     //Kontrollera om det var rätt svar
@@ -377,9 +392,9 @@ public class StartGameActivity extends AppCompatActivity {
     private int[] createNumCorrectArray() {
         int[] temp = new int[4];
         temp[0] = 0;
-        temp[1] = 1;
-        temp[2] = 2;
-        temp[3] = 3;
+        temp[1] = 0;
+        temp[2] = 0;
+        temp[3] = 0;
 
         return temp;
     }

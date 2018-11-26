@@ -14,4 +14,6 @@
     <string name="start_game_button_text">Start</string>
     <string name="cat_is">Kategorin är</string>
     <string name="press_to_contine">Tryck på skärmen för att gå vidare</string>
+    <string name="your_grade">Ditt Betyg:</string>
+    <string name="best_category">Bästa kategorin:</string>
 </resources>

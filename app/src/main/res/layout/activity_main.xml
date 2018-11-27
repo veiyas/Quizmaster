@@ -11,12 +11,13 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:background="@drawable/lefthandbutton"
+        android:elevation="10dp"
         android:fontFamily="sans-serif"
         android:text="Vänsterhänt"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
         android:id="@+id/rightHanded"
@@ -25,10 +26,6 @@
         android:background="@drawable/righthandbutton"
         android:fontFamily="sans-serif"
         android:onClick="setRightHanded"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="5"
         android:text="@string/rightHanded"
         android:textColor="#FFFFFF"
         android:textSize="18sp"

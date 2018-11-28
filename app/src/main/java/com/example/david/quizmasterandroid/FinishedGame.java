@@ -20,7 +20,6 @@ public class FinishedGame extends AppCompatActivity {
         putGrade();
     }
 
-    //TODO spela igen knapp
     public void playAgain(View view) {
         if(MainActivity.isRightHanded) {
             Intent intent = new Intent(this, rightQuizOptions.class);
@@ -52,24 +51,27 @@ public class FinishedGame extends AppCompatActivity {
 
         double accuracy = totalCorrectAnwers / totalQuestions;
 
+        int tc = (int) totalCorrectAnwers;
+        int ta = (int) totalQuestions;
+
         if (accuracy == 1) {
             grade.setRating(5);
-            gradeText.setText("Perfekt! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
+            gradeText.setText("Perfekt! " + tc +"/" + ta + " frågor rätt.");
         } else if (accuracy < 1 && accuracy >= 0.8) {
             grade.setRating(4);
-            gradeText.setText("Mycket bra! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
+            gradeText.setText("Mycket bra! " + tc +"/" + ta + " frågor rätt.");
         } else if (accuracy < 0.8 && accuracy >= 0.6) {
             grade.setRating(3);
-            gradeText.setText("Bra! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
+            gradeText.setText("Bra! " + tc +"/" + ta + " frågor rätt.");
         } else if (accuracy < 0.6 && accuracy >= 0.4) {
             grade.setRating(2);
-            gradeText.setText("Okej! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
+            gradeText.setText("Okej! " + tc +"/" + ta + " frågor rätt.");
         } else if (accuracy < 0.4 && accuracy >= 0.2) {
             grade.setRating(1);
-            gradeText.setText("Dåligt! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
+            gradeText.setText("Dåligt! " + tc +"/" + ta + " frågor rätt.");
         } else {
             grade.setRating(0);
-            gradeText.setText("Värdelöst! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
+            gradeText.setText("Värdelöst! " + tc +"/" + ta + " frågor rätt.");
         }
 
         //Hämta rätt TextView

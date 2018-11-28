@@ -22,9 +22,10 @@
 
     <ImageView
         android:id="@+id/rightHanded"
-        style="@style/rightHandModeTheme"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        style="@style/leftHandModeTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
         android:fontFamily="sans-serif"
         android:onClick="setRightHanded"
         android:text="@string/rightHanded"

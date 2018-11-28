@@ -19,6 +19,38 @@
 			"answer_4": "Bildö"
 		},
 		"correct": "Kymmendö"
+	},
+	{
+		"question": "Vad heter bandet som slog igenom med bla låten We're not gonna take it?",
+		"answers": {
+			"answer_1": "A-ha",
+			"answer_2": "Twisted sister",
+			"answer_3": "New York Dolls",
+			"answer_4": "Primal scream"
+		},
+		"correct": "Twisted sister"
+		
+	},
+	{
+		"question": "Vem målade den berömda målningen Skriet?",
+		"answers": {
+			"answer_1": "Leonardo da Vinci",
+			"answer_2": "Salvador Dali",
+			"answer_3": "Picasso",
+			"answer_4": "Edvard Munch"
+		},
+		"correct": "Edvard Munch"
+		
+	},
+	{
+		"question": "Vilken känd Stockholsskola för konstnärer grundades 1844?",
+		"answers": {
+			"answer_1": "Konstfack",
+			"answer_2": "Kulturama",
+			"answer_3": "Fryshuset",
+			"answer_4": "Kulturpack"
+		},
+		"correct": "Konstfack"
 	}
 	],
 	"Geografi": [
@@ -41,6 +73,36 @@
 			"answer_4": "Uppsala"
 		},
 		"correct": "Uppsala"
+	},
+	{
+		"question": "Vad heter Italiens största och mest aktiva vulkan?",
+		"answers": {
+			"answer_1": "Etna",
+			"answer_2": "Pantelleria",
+			"answer_3": "Vesuvius",
+			"answer_4": "Teide"
+		},
+		"correct": "Etna"
+	},
+	{
+		"question": "I vilket land ligger Koh Kong, Phonm Penh och Siem Reap?",
+		"answers": {
+			"answer_1": "Vietnam",
+			"answer_2": "Thailand",
+			"answer_3": "Kambodja",
+			"answer_4": "Malaysia"
+		},
+		"correct": "Kambodja"
+	},
+	{
+		"question": "Vilket är Panamas oficiella språk?",
+		"answers": {
+			"answer_1": "Spanska",
+			"answer_2": "Portugisiska",
+			"answer_3": "Engelska",
+			"answer_4": "Franska"
+		},
+		"correct": "Spanska"
 	}
 	],
 	"Naturvetenskap": [
@@ -63,6 +125,36 @@
 			"answer_4": "Te"
 		},
 		"correct": "Sn"
+	},
+	{
+		"question": "Vilket sorts djur är en järv?",
+		"answers": {
+			"answer_1": "Ett kattdjur",
+			"answer_2": "Ett ganagardjur",
+			"answer_3": "Ett hunddjur",
+			"answer_4": "Ett mårddjur"
+		},
+		"correct": "Ett mårddjur"
+	},
+	{
+		"question": "Hur många procent salt innehåller döda havet?",
+		"answers": {
+			"answer_1": "30 %",
+			"answer_2": "33 %",
+			"answer_3": "28 %",
+			"answer_4": "32 %"
+		},
+		"correct": "33 %"
+	},
+	{
+		"question": "Vad är SI-enheten för energi?",
+		"answers": {
+			"answer_1": "Ampere",
+			"answer_2": "Volt",
+			"answer_3": "Joule",
+			"answer_4": "Watt"
+		},
+		"correct": "Joule"
 	}
 	],
 	"Samhälle": [
@@ -85,6 +177,36 @@
 			"answer_4": "Hillary Clinton"
 		},
 		"correct": "Melania Trump"
+	},
+	{
+		"question": "Vad heter Sveriges nuvarande konung?",
+		"answers": {
+			"answer_1": "Karl XVI Gustav",
+			"answer_2": "Carl XVI Gustav",
+			"answer_3": "Carl XVI Gustaf",
+			"answer_4": "Karl XVI Gustaf"
+		},
+		"correct": "Carl XVI Gustaf"
+	},
+	{
+		"question": "Mellan vilka datum MÅSTE man i Sverihe ha vinterdäck på bilen?",
+		"answers": {
+			"answer_1": "1 okt - 15 apr",
+			"answer_2": "1 dec - 31 mars",
+			"answer_3": "31 dec - 1 mars",
+			"answer_4": "15 okt - 1 mars"
+		},
+		"correct": "1 dec - 31 mars"
+	},
+	{
+		"question": "Vilket är det vanligaste gymnasieprogrammet i Sverige?",
+		"answers": {
+			"answer_1": "Natur",
+			"answer_2": "Samhälle",
+			"answer_3": "Ekonomi",
+			"answer_4": "Teknik"
+		},
+		"correct": "Natur"
 	}
 	],
 	"Historia": [
@@ -107,6 +229,36 @@
 			"answer_4": "1980"
 		},
 		"correct": "2018"
+	},
+	{
+		"question": "Från vilket land tilltvingade sig Sovjet Petsamoområdet under andra världskriget?",
+		"answers": {
+			"answer_1": "Lettland",
+			"answer_2": "Estland",
+			"answer_3": "Norge",
+			"answer_4": "Finland"
+		},
+		"correct": "Finland"
+	},
+	{
+		"question": "Vem var kung inna Gustav Vasa?",
+		"answers": {
+			"answer_1": "Karl IX",
+			"answer_2": "Sigismund",
+			"answer_3": "Erik XIV",
+			"answer_4": "Kristian II"
+		},
+		"correct": "Kristia II"
+	},
+	{
+		"question": "Hur många människor bodde i Sverige 1870?",
+		"answers": {
+			"answer_1": "Ca 1 miljon",
+			"answer_2": "Ca 4 miljoner",
+			"answer_3": "Ca 800 000",
+			"answer_4": "Ca 2 miljoner"
+		},
+		"correct": "Ca 4 miljoner"
 	}
 	],
 	"Sport": [
@@ -129,6 +281,39 @@
 			"answer_4": "1"
 		},
 		"correct": "4"
+	},
+	{
+		"question": "Exakt hur långt sedan 1924 är ett maratonlopp?",
+		"answers": {
+			"answer_1": "40 195 m",
+			"answer_2": "42 195 m",
+			"answer_3": "41 195 m",
+			"answer_4": "43 195 m"
+		},
+		"correct": "42 195 m"
+		
+	},
+	{
+		"question": "I vilken sport förekommer termen japanare?",
+		"answers": {
+			"answer_1": "Innebandy",
+			"answer_2": "Curling",
+			"answer_3": "Basket",
+			"answer_4": "Handboll"
+		},
+		"correct": "Handboll"
+		
+	},
+	{
+		"question": "Vilket är bordtennisspelaren Ulf Carlsson smeknamn?",
+		"answers": {
+			"answer_1": "Snidan",
+			"answer_2": "Tickan",
+			"answer_3": "Sorken",
+			"answer_4": "Garvis"
+		},
+		"correct": "Tickan"
 	}
+	
 	]
 }

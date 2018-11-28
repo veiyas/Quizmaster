@@ -1,8 +1,10 @@
 package com.example.david.quizmasterandroid;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.ColorSpace;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +30,9 @@ public class StartGameActivity extends AppCompatActivity {
     private JSONArray cat3json;
     private JSONArray cat4json;
 
+    //Activitet för att starta om spelet senare
+    private Activity restartGame = getParent();
+
     //Rotlayouten för att kunna ändra innehållet dynamiskt
     private ConstraintLayout main;
     private Button continueButton;
@@ -41,9 +46,10 @@ public class StartGameActivity extends AppCompatActivity {
     private Button button2;
     private Button button3;
     private Button button4;
+    private int pressedGray = Color.rgb(173, 179, 188);
 
     //Begränsningar
-    public static final int questionPerSubject = 2;
+    public static final int questionPerSubject = 5;
     public static final int numberOfSubjects = 4;
     boolean gameIsDone = false;
     boolean timeOut = false;
@@ -149,7 +155,7 @@ public class StartGameActivity extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT));
 
             //Skapa TextView objekt med frågan och egenskaper
-            final TextView questionText = new TextView(main.getContext()); questionText.setHeight(400);
+            final TextView questionText = new TextView(main.getContext()); //questionText.setHeight(400);
             questionText.setText(theCatJSON.getJSONObject(questionNum).getString("question"));
             questionText.setTextSize(27); questionText.setPadding(0,40,0,50);
             questionText.setGravity(Gravity.CENTER);
@@ -157,11 +163,11 @@ public class StartGameActivity extends AppCompatActivity {
             //Skapa table rows
             final TableRow tableRow1 = new TableRow(main.getContext());
             tableRow1.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
-            tableRow1.setGravity(Gravity.CENTER); tableRow1.setWeightSum(100);
+            tableRow1.setGravity(Gravity.CENTER);
 
             final TableRow tableRow2 = new TableRow(main.getContext());
             tableRow2.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
-            tableRow2.setGravity(Gravity.CENTER); tableRow2.setWeightSum(100);
+            tableRow2.setGravity(Gravity.CENTER);
 
             //Skapa en tabell (matris) med knappar
             final TableLayout buttonCon = new TableLayout((main.getContext()));
@@ -181,8 +187,9 @@ public class StartGameActivity extends AppCompatActivity {
             buttonCon.addView(tableRow2);
 
             //Skapa nedräkningstext
-            countdown = new TextView(main.getContext()); countdown.setHeight(280);
-            countdown.setGravity(Gravity.CENTER); countdown.setTextSize(20); countdown.setPadding(0,0,0,0);
+            //TODO countdownbar för tiden
+            countdown = new TextView(main.getContext()); //countdown.setHeight(280);
+            countdown.setGravity(Gravity.CENTER); countdown.setTextSize(24);
 
             mCountDownTimer = new CountDownTimer(10000,1000) {
                 @Override
@@ -242,10 +249,10 @@ public class StartGameActivity extends AppCompatActivity {
             final Button choice = findViewById(v.getId());
 
             //Skapa spänning med en timout
-            tension = new CountDownTimer(2500, 10)
+            tension = new CountDownTimer(600, 10)
             {
                 public void onTick(long millisUntilFinished) {
-                    v.setBackgroundColor(Color.YELLOW);
+                    v.setBackgroundColor(pressedGray);
                     setButtonsClickable(false);
                 }
                 public void onFinish() {
@@ -294,9 +301,9 @@ public class StartGameActivity extends AppCompatActivity {
         else if(button4.getText().equals(correctAnswer))
             button4.setBackgroundColor(Color.GREEN);
         if(timeOut)
-            countdown.setText("Tiden är ute! \n Rätt svar är: \n" + correctAnswer);
+            countdown.setText("Tiden är ute!");
         else
-            countdown.setText("Fel svar! \n Rätt svar är: \n" + correctAnswer);
+            countdown.setText("Fel svar!");
     }
 
     private void continueTheGame() {
@@ -351,8 +358,7 @@ public class StartGameActivity extends AppCompatActivity {
         button3 = new Button(main.getContext()); button3.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_3"));
         button4 = new Button(main.getContext()); button4.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_4"));
 
-        button1.setWidth(500); button2.setWidth(500); button3.setWidth(500); button4.setWidth(500);
-        button1.setHeight(200); button2.setHeight(200); button3.setHeight(200); button4.setHeight(200);
+        //button1.setWidth(500); button2.setWidth(500); button3.setWidth(500); button4.setWidth(500);
 
         setButtonsClickable(true);
 

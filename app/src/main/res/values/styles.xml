@@ -7,10 +7,20 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="rightHandModeTheme">
+        <item name="android:background">@drawable/hand_mode_button</item>
+        <item name="android:src">@drawable/right_hand_mode</item>
+    </style>
+
+    <style name="leftHandModeTheme">
+        <item name="android:background">@drawable/hand_mode_button</item>
+        <item name="android:src">@drawable/ic_turn_left</item>
+    </style>
 </resources>

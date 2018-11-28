@@ -21,7 +21,7 @@
 		"correct": "Kymmendö"
 	},
 	{
-		"question": "Vad heter bandet som slog igenom med bla låten We're not gonna take it?",
+		"question": "Vad heter bandet som slog igenom med bl.a låten We're not gonna take it?",
 		"answers": {
 			"answer_1": "A-ha",
 			"answer_2": "Twisted sister",
@@ -43,7 +43,7 @@
 		
 	},
 	{
-		"question": "Vilken känd Stockholsskola för konstnärer grundades 1844?",
+		"question": "Vilken känd Stockholmsskola för konstnärer grundades 1844?",
 		"answers": {
 			"answer_1": "Konstfack",
 			"answer_2": "Kulturama",
@@ -95,7 +95,7 @@
 		"correct": "Kambodja"
 	},
 	{
-		"question": "Vilket är Panamas oficiella språk?",
+		"question": "Vilket är Panamas officiella språk?",
 		"answers": {
 			"answer_1": "Spanska",
 			"answer_2": "Portugisiska",
@@ -127,7 +127,7 @@
 		"correct": "Sn"
 	},
 	{
-		"question": "Vilket sorts djur är en järv?",
+		"question": "Vilket sorts djurgrupp tillhör järven?",
 		"answers": {
 			"answer_1": "Ett kattdjur",
 			"answer_2": "Ett ganagardjur",
@@ -189,7 +189,7 @@
 		"correct": "Carl XVI Gustaf"
 	},
 	{
-		"question": "Mellan vilka datum MÅSTE man i Sverihe ha vinterdäck på bilen?",
+		"question": "Mellan vilka datum MÅSTE man i Sverige ha vinterdäck på bilen?",
 		"answers": {
 			"answer_1": "1 okt - 15 apr",
 			"answer_2": "1 dec - 31 mars",
@@ -241,14 +241,14 @@
 		"correct": "Finland"
 	},
 	{
-		"question": "Vem var kung inna Gustav Vasa?",
+		"question": "Vem var kung innan Gustav Vasa?",
 		"answers": {
 			"answer_1": "Karl IX",
 			"answer_2": "Sigismund",
 			"answer_3": "Erik XIV",
 			"answer_4": "Kristian II"
 		},
-		"correct": "Kristia II"
+		"correct": "Kristian II"
 	},
 	{
 		"question": "Hur många människor bodde i Sverige 1870?",

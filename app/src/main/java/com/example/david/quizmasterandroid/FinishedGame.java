@@ -1,7 +1,9 @@
 package com.example.david.quizmasterandroid;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -16,6 +18,19 @@ public class FinishedGame extends AppCompatActivity {
 
         //Beräkna och visa betyg
         putGrade();
+    }
+
+    //TODO spela igen knapp
+    public void playAgain(View view) {
+        if(MainActivity.isRightHanded) {
+            Intent intent = new Intent(this, rightQuizOptions.class);
+
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, leftQuizOptions.class);
+
+            startActivity(intent);
+        }
     }
 
     private void putGrade() {
@@ -39,22 +54,22 @@ public class FinishedGame extends AppCompatActivity {
 
         if (accuracy == 1) {
             grade.setRating(5);
-            gradeText.setText("Perfekt!");
+            gradeText.setText("Perfekt! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
         } else if (accuracy < 1 && accuracy >= 0.8) {
             grade.setRating(4);
-            gradeText.setText("Mycket bra!");
+            gradeText.setText("Mycket bra! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
         } else if (accuracy < 0.8 && accuracy >= 0.6) {
             grade.setRating(3);
-            gradeText.setText("Bra!");
+            gradeText.setText("Bra! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
         } else if (accuracy < 0.6 && accuracy >= 0.4) {
             grade.setRating(2);
-            gradeText.setText("Helt okej!");
+            gradeText.setText("Okej! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
         } else if (accuracy < 0.4 && accuracy >= 0.2) {
             grade.setRating(1);
-            gradeText.setText("Dåligt!");
+            gradeText.setText("Dåligt! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
         } else {
             grade.setRating(0);
-            gradeText.setText("Värdelöst!");
+            gradeText.setText("Värdelöst! " + totalCorrectAnwers +"/" + totalQuestions + " frågor rätt.");
         }
 
         //Hämta rätt TextView

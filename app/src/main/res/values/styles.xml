@@ -15,12 +15,12 @@
     </style>
 
     <style name="rightHandModeTheme">
-        <item name="android:background">@drawable/hand_mode_button</item>
-        <item name="android:src">@drawable/right_hand_mode</item>
+        <item name="android:background">@drawable/right_hand_mode_button</item>
+        <item name="android:src">@drawable/ic_right_hand_mode</item>
     </style>
 
     <style name="leftHandModeTheme">
-        <item name="android:background">@drawable/hand_mode_button</item>
-        <item name="android:src">@drawable/ic_turn_left</item>
+        <item name="android:background">@drawable/left_hand_mode_button</item>
+        <item name="android:src">@drawable/ic_left_hand_mode</item>
     </style>
 </resources>

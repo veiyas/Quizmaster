@@ -14,25 +14,21 @@
         android:elevation="10dp"
         android:fontFamily="sans-serif"
         android:onClick="setLeftHanded"
-        android:text="Vänsterhänt"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="centerInside"/>
 
     <ImageView
         android:id="@+id/rightHanded"
-        style="@style/leftHandModeTheme"
+        style="@style/rightHandModeTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="10dp"
         android:fontFamily="sans-serif"
         android:onClick="setRightHanded"
-        android:text="@string/rightHanded"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerInside"/>
 
     <TextView
         android:id="@+id/textView4"

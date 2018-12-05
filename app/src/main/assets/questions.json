@@ -147,7 +147,7 @@
 		"correct": "33 %"
 	},
 	{
-		"question": "Vad är SI-enheten för energi?",
+		"question": "Vad är SI-enheten för energi? (Systéme International)",
 		"answers": {
 			"answer_1": "Ampere",
 			"answer_2": "Volt",

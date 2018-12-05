@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".leftQuizOptions">
 
     <TextView
@@ -97,6 +98,7 @@
 
     <Button
         android:id="@+id/startButton"
+        style="@style/startButton"
         android:layout_width="155dp"
         android:layout_height="91dp"
         android:layout_marginBottom="8dp"

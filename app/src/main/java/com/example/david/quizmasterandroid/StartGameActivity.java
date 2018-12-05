@@ -353,13 +353,10 @@ public class StartGameActivity extends AppCompatActivity {
     @SuppressLint("ResourceType")
     private void initializeAnswerButtons(JSONArray theCatJSON) throws JSONException {
         //Skapa knappar
-        button1 = new Button(main.getContext()); button1.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_1"));
-        button2 = new Button(main.getContext()); button2.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_2"));
-        button3 = new Button(main.getContext()); button3.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_3"));
-        button4 = new Button(main.getContext()); button4.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_4"));
-
-        //button1.setWidth(500); button2.setWidth(500); button3.setWidth(500); button4.setWidth(500);
-
+        button1 = (Button) getLayoutInflater().inflate(R.layout.trbr_button, null); button1.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_1"));
+        button2 = (Button) getLayoutInflater().inflate(R.layout.tlbr, null); button2.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_2"));
+        button3 = (Button) getLayoutInflater().inflate(R.layout.tlbr, null); button3.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_3"));
+        button4 = (Button) getLayoutInflater().inflate(R.layout.trbr_button, null); button4.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_4"));
         setButtonsClickable(true);
 
         //lägg till actionlistenter och ID för alla knappar

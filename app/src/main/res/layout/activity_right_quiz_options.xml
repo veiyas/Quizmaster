@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".rightQuizOptions">
 
     <Button
         android:id="@+id/startButton"
+        style="@style/startButton"
         android:layout_width="155dp"
         android:layout_height="91dp"
         android:layout_marginBottom="8dp"
@@ -61,6 +63,7 @@
             android:paddingTop="15dp"
             android:paddingEnd="40dp"
             android:text="@string/cat1"
+            android:textColorLink="@color/colorAccent"
             android:textSize="24sp" />
 
         <Switch

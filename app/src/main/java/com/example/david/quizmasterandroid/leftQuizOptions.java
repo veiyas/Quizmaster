@@ -1,6 +1,7 @@
 package com.example.david.quizmasterandroid;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,7 @@ public class leftQuizOptions extends AppCompatActivity {
         errorText.setText("Du måste välja fyra kategorier!");
         startButton = (Button) findViewById(R.id.startButton);
         startButton.setClickable(false); startButton.setText("Inte redo!");
+        startButton.setEnabled(false); startButton.setTextColor(Color.GRAY);
 
         //Sätt en actionlistener på alla switchar
         theSwitches.add((Switch) findViewById(R.id.switch1));
@@ -52,11 +54,13 @@ public class leftQuizOptions extends AppCompatActivity {
             if(switchesPressed == 4) {
                 errorText.setText("Redo!");
 
+                startButton.setEnabled(true); startButton.setTextColor(Color.WHITE);
                 startButton.setClickable(true); startButton.setText("Start!");
             }
             else {
                 errorText.setText("Du måste välja fyra kategorier!");
 
+                startButton.setEnabled(false); startButton.setTextColor(Color.GRAY);
                 startButton.setClickable(false); startButton.setText("Inte redo!");
             }
 

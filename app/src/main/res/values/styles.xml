@@ -23,4 +23,17 @@
         <item name="android:background">@drawable/left_hand_mode_button</item>
         <item name="android:src">@drawable/ic_left_hand_mode</item>
     </style>
+
+    <style name="startButton">
+        <item name="android:background">@drawable/start_game_button</item>
+    </style>
+
+    <style name="tRbR">
+        <item name="android:background">@drawable/top_left_bottom_right</item>
+    </style>
+
+    <style name="tLbR">
+        <item name="android:background">@drawable/top_right_bottom_left</item>
+    </style>
+
 </resources>

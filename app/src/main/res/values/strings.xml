@@ -17,4 +17,5 @@
     <string name="your_grade">Ditt Betyg:</string>
     <string name="best_category">Bästa kategorin:</string>
     <string name="restart_game">Spela igen</string>
+    <string name="worst_category">Sämsta kategorin:</string>
 </resources>

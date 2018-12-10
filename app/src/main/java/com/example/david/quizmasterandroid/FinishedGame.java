@@ -76,6 +76,7 @@ public class FinishedGame extends AppCompatActivity {
 
         //Hämta rätt TextView
         TextView catText = findViewById(R.id.catText);
+        TextView wCatText = findViewById(R.id.worstCatText);
 
         //Kontrollera vilken kategori som var bäst
         int slotWithHighest = 0;
@@ -85,5 +86,11 @@ public class FinishedGame extends AppCompatActivity {
                 slotWithHighest = i+1;
         }
         catText.setText(cats.get(slotWithHighest));
+
+        for(int i=0; i < StartGameActivity.numberOfSubjects - 1;  ++i) {
+            if(statistics[i] > statistics[i+1])
+                slotWithHighest = i+1;
+        }
+        wCatText.setText(cats.get(slotWithHighest));
     }
 }

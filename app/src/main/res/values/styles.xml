@@ -28,6 +28,10 @@
         <item name="android:background">@drawable/start_game_button</item>
     </style>
 
+    <style name="nextQuestionButton">
+        <item name="android:background">@drawable/next_question_button</item>
+    </style>
+
     <style name="tRbR">
         <item name="android:background">@drawable/top_left_bottom_right</item>
     </style>

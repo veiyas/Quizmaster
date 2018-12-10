@@ -13,6 +13,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -42,10 +44,11 @@ public class StartGameActivity extends AppCompatActivity {
     private CountDownTimer tension;
 
     //Knappar
-    private Button button1;
-    private Button button2;
-    private Button button3;
-    private Button button4;
+    private RadioGroup buttonGroup;
+    private RadioButton button1;
+    private RadioButton button2;
+    private RadioButton button3;
+    private RadioButton button4;
     private int pressedGray = Color.rgb(173, 179, 188);
 
     //Begränsningar
@@ -162,12 +165,13 @@ public class StartGameActivity extends AppCompatActivity {
 
             //Skapa table rows
             final TableRow tableRow1 = new TableRow(main.getContext());
-            tableRow1.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
             tableRow1.setGravity(Gravity.CENTER);
 
             final TableRow tableRow2 = new TableRow(main.getContext());
-            tableRow2.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
             tableRow2.setGravity(Gravity.CENTER);
+
+            TableRow.LayoutParams params = new TableRow.LayoutParams();
+            params.leftMargin = 7; params.topMargin = 7; params.bottomMargin = 7; params.rightMargin = 7;
 
             //Skapa en tabell (matris) med knappar
             final TableLayout buttonCon = new TableLayout((main.getContext()));
@@ -177,10 +181,10 @@ public class StartGameActivity extends AppCompatActivity {
             initializeAnswerButtons(theCatJSON);
 
             //Lägga knappar i 2 kolonner
-            tableRow1.addView(button1);
-            tableRow1.addView(button2);
-            tableRow2.addView(button3);
-            tableRow2.addView(button4);
+            tableRow1.addView(button1, params);
+            tableRow1.addView(button2, params);
+            tableRow2.addView(button3, params);
+            tableRow2.addView(button4, params);
 
             //Lägg till kolonner i table
             buttonCon.addView(tableRow1);
@@ -213,10 +217,17 @@ public class StartGameActivity extends AppCompatActivity {
             mCountDownTimer.start();
 
             //Skapa en "nästa fråga" knapp
-            continueButton = new Button(c.getContext()); continueButton.setText("Nästa Fråga");
+            // button1 = (Button) getLayoutInflater().inflate(R.layout.trbr_button, null);
+            continueButton = (Button) getLayoutInflater().inflate(R.layout.next_question, null);
             continueButton.setOnClickListener(nextQuestion); continueButton.setGravity(Gravity.CENTER);
-            continueButton.setVisibility(View.INVISIBLE); continueButton.setHeight(300);
+            continueButton.setVisibility(View.INVISIBLE);
             continueButton.setPadding(0, 0, 0, 30);
+            continueButton.setTextColor(Color.WHITE); continueButton.setText("Nästa Fråga");
+            continueButton.setTextSize(18);
+
+            TableRow.LayoutParams paramsNextButton = new TableRow.LayoutParams();
+            paramsNextButton.leftMargin = 20; paramsNextButton.topMargin = 20;
+            paramsNextButton.bottomMargin = 20; paramsNextButton.rightMargin = 20;
 
             //Vilken fråga du är på
             TextView questionProgress = new TextView(main.getContext()); questionProgress.setGravity(Gravity.CENTER);
@@ -226,8 +237,8 @@ public class StartGameActivity extends AppCompatActivity {
             c.addView(questionProgress);
             c.addView(questionText);
             c.addView(countdown);
-            c.addView(buttonCon);
-            c.addView(continueButton);
+            c.addView(buttonGroup);
+            c.addView(continueButton, paramsNextButton);
 
             main.addView(c);
             ++whichQuestion;
@@ -258,10 +269,10 @@ public class StartGameActivity extends AppCompatActivity {
                 public void onFinish() {
                     if(correctAnswer(choice)) {
                         countdown.setText("Rätt svar!");
-                        v.setBackgroundColor(Color.GREEN);
+                        v.setBackgroundColor(Color.parseColor("#46CE5A"));
                         numCorrect[subjectNum]++;
                     } else {
-                        v.setBackgroundColor(Color.RED);
+                        v.setBackgroundColor(Color.parseColor("#D14545"));
                         labelIncorrectAnswer();
                     }
 
@@ -293,13 +304,13 @@ public class StartGameActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         if(button1.getText().equals(correctAnswer))
-            button1.setBackgroundColor(Color.GREEN);
+            button1.setBackgroundColor(Color.parseColor("#46CE5A"));
         else if(button2.getText().equals(correctAnswer))
-            button2.setBackgroundColor(Color.GREEN);
+            button2.setBackgroundColor(Color.parseColor("#46CE5A"));
         else if(button3.getText().equals(correctAnswer))
-            button3.setBackgroundColor(Color.GREEN);
+            button3.setBackgroundColor(Color.parseColor("#46CE5A"));
         else if(button4.getText().equals(correctAnswer))
-            button4.setBackgroundColor(Color.GREEN);
+            button4.setBackgroundColor(Color.parseColor("#46CE5A"));
         if(timeOut)
             countdown.setText("Tiden är ute!");
         else
@@ -353,10 +364,17 @@ public class StartGameActivity extends AppCompatActivity {
     @SuppressLint("ResourceType")
     private void initializeAnswerButtons(JSONArray theCatJSON) throws JSONException {
         //Skapa knappar
-        button1 = (Button) getLayoutInflater().inflate(R.layout.trbr_button, null); button1.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_1"));
-        button2 = (Button) getLayoutInflater().inflate(R.layout.tlbr, null); button2.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_2"));
-        button3 = (Button) getLayoutInflater().inflate(R.layout.tlbr, null); button3.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_3"));
-        button4 = (Button) getLayoutInflater().inflate(R.layout.trbr_button, null); button4.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_4"));
+//        button1 = (Button) getLayoutInflater().inflate(R.layout.trbr_button, null); button1.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_1"));
+//        button2 = (Button) getLayoutInflater().inflate(R.layout.tlbr, null); button2.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_2"));
+//        button3 = (Button) getLayoutInflater().inflate(R.layout.tlbr, null); button3.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_3"));
+//        button4 = (Button) getLayoutInflater().inflate(R.layout.trbr_button, null); button4.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_4"));
+//        setButtonsClickable(true);
+
+        buttonGroup = new RadioGroup(main.getContext());
+        button1 = (RadioButton) getLayoutInflater().inflate(R.layout.trbr_button, null); button1.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_1"));
+        button2 = (RadioButton) getLayoutInflater().inflate(R.layout.tlbr, null); button2.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_2"));
+        button3 = (RadioButton) getLayoutInflater().inflate(R.layout.tlbr, null); button3.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_3"));
+        button4 = (RadioButton) getLayoutInflater().inflate(R.layout.trbr_button, null); button4.setText(theCatJSON.getJSONObject(questionNum).getJSONObject("answers").getString("answer_4"));
         setButtonsClickable(true);
 
         //lägg till actionlistenter och ID för alla knappar
@@ -364,6 +382,11 @@ public class StartGameActivity extends AppCompatActivity {
         button2.setOnClickListener(questionCheck); button2.setId(2);
         button3.setOnClickListener(questionCheck); button3.setId(3);
         button4.setOnClickListener(questionCheck); button4.setId(4);
+
+        buttonGroup.addView(button1);
+        buttonGroup.addView(button2);
+        buttonGroup.addView(button3);
+        buttonGroup.addView(button4);
     }
 
     private void setButtonsClickable(boolean c) {

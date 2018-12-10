@@ -6,4 +6,6 @@
     <color name="backgroundColor">#dcc9b7d6</color>
     <color name="disabled">#1e723095</color>
     <color name="brightText">#ffffff</color>
+    <color name="rightAnswer">#46CE5A</color>
+    <color name="wrongAnswer">#D14545</color>
 </resources>

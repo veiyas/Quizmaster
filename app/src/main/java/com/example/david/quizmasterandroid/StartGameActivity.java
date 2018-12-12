@@ -261,6 +261,7 @@ public class StartGameActivity extends AppCompatActivity {
             //Hämta valda svaret (knappen)
             final Button choice = findViewById(v.getId());
 
+            v.setPressed(true);
             //Skapa spänning med en timout
             tension = new CountDownTimer(600, 10)
             {
@@ -336,6 +337,8 @@ public class StartGameActivity extends AppCompatActivity {
 
     //Kontrollera om det var rätt svar
     private boolean correctAnswer(Button id) {
+        //TODO kontrollera om någon fråga inte fungerar som den ska
+
         try {
             String correctAnswer = pickCategory(subjectNum).getJSONObject(questionNum).getString("correct");
 

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="rightOrWrong">
-        <attr name="state_correct" format="boolean" />
-        <attr name="state_false" format="boolean" />
-    </declare-styleable>
-</resources>

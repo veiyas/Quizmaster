@@ -2,7 +2,7 @@
     <string name="app_name">QuizmasterAndroid</string>
     <string name="leftHanded">Vänsterhänt</string>
     <string name="rightHanded">Högerhänt</string>
-    <string name="right_left_handed">Är du höger- eller vänsterhänt?</string>
+    <string name="right_left_handed">Är du vänster- eller högerhänt?</string>
     <string name="welcome_text">Välkommen till Quizmaster!</string>
     <string name="choose_categories">Välj 4 kategorier!</string>
     <string name="cat1">Kultur</string>

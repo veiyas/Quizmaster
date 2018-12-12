@@ -8,4 +8,5 @@
     <color name="brightText">#ffffff</color>
     <color name="rightAnswer">#46CE5A</color>
     <color name="wrongAnswer">#D14545</color>
+    <color name="answerPressed">#553466</color>
 </resources>

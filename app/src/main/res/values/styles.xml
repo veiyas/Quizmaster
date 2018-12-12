@@ -40,4 +40,8 @@
         <item name="android:background">@drawable/top_right_bottom_left</item>
     </style>
 
+    <style name="tLpressed">
+        <item name="android:background">@drawable/top_left_pressed</item>
+    </style>
+
 </resources>

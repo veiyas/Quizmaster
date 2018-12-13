@@ -200,7 +200,7 @@ public class StartGameActivity extends AppCompatActivity {
             countdown = new TextView(main.getContext()); //countdown.setHeight(280);
             countdown.setGravity(Gravity.CENTER); countdown.setTextSize(24);
 
-            mCountDownTimer = new CountDownTimer(10000,1000) {
+            mCountDownTimer = new CountDownTimer(15000,1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     countdown.setText("Tid kvar: " + (millisUntilFinished / 1000));
@@ -263,7 +263,7 @@ public class StartGameActivity extends AppCompatActivity {
 
             v.setPressed(true);
             //Skapa spänning med en timout
-            tension = new CountDownTimer(600, 10)
+            tension = new CountDownTimer(600, 5)
             {
                 public void onTick(long millisUntilFinished) {
                     setButtonsClickable(false);

@@ -167,6 +167,7 @@ public class StartGameActivity extends AppCompatActivity {
             questionText.setText(theCatJSON.getJSONObject(questionNum).getString("question"));
             questionText.setTextSize(27); questionText.setPadding(0,40,0,50);
             questionText.setGravity(Gravity.CENTER); questionText.setHeight(400);
+            questionText.setTextColor(Color.parseColor("#313131"));
 
             //Skapa table rows
             final TableRow tableRow1 = new TableRow(main.getContext());

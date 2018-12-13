@@ -12,24 +12,24 @@
         style="@style/leftHandModeTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="10dp"
+        android:elevation="30dp"
         android:fontFamily="sans-serif"
         android:onClick="setLeftHanded"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:scaleType="centerInside"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/rightHanded"
         style="@style/rightHandModeTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="10dp"
+        android:elevation="30dp"
         android:fontFamily="sans-serif"
         android:onClick="setRightHanded"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="centerInside"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView4"

@@ -165,7 +165,7 @@ public class StartGameActivity extends AppCompatActivity {
             //Skapa linearlayout för skärmen
             c = new LinearLayout(main.getContext());
             c.setOrientation(LinearLayout.VERTICAL); c.setGravity(Gravity.CENTER);
-            c.setPadding(100, 150,100,0);
+            c.setPadding(0, 150,0,0);
             c.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -174,7 +174,7 @@ public class StartGameActivity extends AppCompatActivity {
             final TextView questionText = new TextView(main.getContext()); //questionText.setHeight(400);
             questionText.setText(theCatJSON.getJSONObject(questionNum).getString("question"));
             questionText.setTextSize(27); questionText.setPadding(0,40,0,50);
-            questionText.setGravity(Gravity.CENTER); questionText.setHeight(500);
+            questionText.setGravity(Gravity.CENTER); questionText.setHeight(400);
             questionText.setTextColor(Color.parseColor("#313131"));
             questionText.setTypeface(tf);
 
@@ -190,7 +190,7 @@ public class StartGameActivity extends AppCompatActivity {
 
             //Skapa en tabell (matris) med knappar
             final TableLayout buttonCon = new TableLayout((main.getContext()));
-            buttonCon.setGravity(Gravity.CENTER); buttonCon.setPadding(0,100,0,220);
+            buttonCon.setGravity(Gravity.CENTER); buttonCon.setPadding(0,100,0,50);
 
             //Skapa alla knappar (button1, osv)
             initializeAnswerButtons(theCatJSON);
@@ -206,10 +206,9 @@ public class StartGameActivity extends AppCompatActivity {
             buttonCon.addView(tableRow2);
 
             //Skapa nedräkningstext
-            //TODO countdownbar för tiden
-            countdown = new TextView(main.getContext()); //countdown.setHeight(280);
+            countdown = new TextView(main.getContext());
             countdown.setGravity(Gravity.CENTER); countdown.setTextSize(24);
-            countdown.setPadding(0,50,0,10);
+            countdown.setPadding(0,30,0,10);
             countdown.setTypeface(tf);
 
             mCountDownTimer = new CountDownTimer(15000,1000) {
@@ -238,7 +237,7 @@ public class StartGameActivity extends AppCompatActivity {
             continueButton = (Button) getLayoutInflater().inflate(R.layout.next_question, null);
             continueButton.setOnClickListener(nextQuestion); continueButton.setGravity(Gravity.CENTER);
             continueButton.setVisibility(View.INVISIBLE);
-            continueButton.setPadding(0, 0, 0, 30);
+            continueButton.setPadding(0, 0, 0, 20);
             continueButton.setTextColor(Color.WHITE); continueButton.setText("Nästa Fråga");
             continueButton.setTextSize(18);
 
@@ -355,7 +354,6 @@ public class StartGameActivity extends AppCompatActivity {
 
     //Kontrollera om det var rätt svar
     private boolean correctAnswer(Button id) {
-        //TODO kontrollera om någon fråga inte fungerar som den ska
 
         try {
             String correctAnswer = pickCategory(subjectNum).getJSONObject(questionNum).getString("correct");

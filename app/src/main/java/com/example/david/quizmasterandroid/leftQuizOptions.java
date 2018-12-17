@@ -53,6 +53,7 @@ public class leftQuizOptions extends AppCompatActivity {
             }
             if(switchesPressed == 4) {
                 errorText.setText("Redo!");
+                errorText.setTextColor(Color.parseColor("#2b6c2b"));
 
                 startButton.setEnabled(true); startButton.setTextColor(Color.WHITE);
                 startButton.setClickable(true); startButton.setText("Start!");

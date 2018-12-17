@@ -6,8 +6,8 @@
     <color name="backgroundColor">#dcc9b7d6</color>
     <color name="disabled">#1e723095</color>
     <color name="brightText">#ffffff</color>
-    <color name="rightAnswer">#46CE5A</color>
-    <color name="wrongAnswer">#D14545</color>
+    <color name="rightAnswer">#2b6c2b</color>
+    <color name="wrongAnswer">#a22020</color>
     <color name="answerPressed">#553466</color>
     <color name="blackText">#313131</color>
 </resources>

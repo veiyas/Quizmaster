@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.ColorSpace;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
@@ -27,6 +28,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class StartGameActivity extends AppCompatActivity {
+
+
     //JSON grejer
     private JSONArray cat1json;
     private JSONArray cat2json;
@@ -82,8 +85,10 @@ public class StartGameActivity extends AppCompatActivity {
     //För att avsluta spelet och skicka med statistik
     Intent finishGameIntent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_game);
 
@@ -112,6 +117,7 @@ public class StartGameActivity extends AppCompatActivity {
     }
 
     private void presentCategory() {
+        Typeface tf = Typeface.createFromAsset(getBaseContext().getAssets(), "fonts/amaranth.ttf");
         setContentView(R.layout.activity_start_game);
 
         String subjectTitle;
@@ -127,6 +133,7 @@ public class StartGameActivity extends AppCompatActivity {
         //Visa kategorinamnet
         TextView catName = (TextView) findViewById(R.id.catName); catName.setText(subjectTitle);
         catName.setTextColor(Color.BLACK);
+        catName.setTypeface(tf);
 
         //Lägg rotlayouten i en variabel som går att använda senare
         main = (ConstraintLayout) findViewById((R.id.main));
@@ -143,6 +150,7 @@ public class StartGameActivity extends AppCompatActivity {
 
     @SuppressLint("ResourceType")
     public void createQuestionLayout() {
+        Typeface tf = Typeface.createFromAsset(getBaseContext().getAssets(), "fonts/amaranth.ttf");
         //Initialisera main och answerPressed
         answerPressed = false;
         timeOut = false;
@@ -157,7 +165,7 @@ public class StartGameActivity extends AppCompatActivity {
             //Skapa linearlayout för skärmen
             c = new LinearLayout(main.getContext());
             c.setOrientation(LinearLayout.VERTICAL); c.setGravity(Gravity.CENTER);
-            c.setPadding(0, 150,0,0);
+            c.setPadding(100, 150,100,0);
             c.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -166,8 +174,9 @@ public class StartGameActivity extends AppCompatActivity {
             final TextView questionText = new TextView(main.getContext()); //questionText.setHeight(400);
             questionText.setText(theCatJSON.getJSONObject(questionNum).getString("question"));
             questionText.setTextSize(27); questionText.setPadding(0,40,0,50);
-            questionText.setGravity(Gravity.CENTER); questionText.setHeight(400);
+            questionText.setGravity(Gravity.CENTER); questionText.setHeight(500);
             questionText.setTextColor(Color.parseColor("#313131"));
+            questionText.setTypeface(tf);
 
             //Skapa table rows
             final TableRow tableRow1 = new TableRow(main.getContext());
@@ -181,7 +190,7 @@ public class StartGameActivity extends AppCompatActivity {
 
             //Skapa en tabell (matris) med knappar
             final TableLayout buttonCon = new TableLayout((main.getContext()));
-            buttonCon.setGravity(Gravity.CENTER); buttonCon.setPadding(0,100,0,80);
+            buttonCon.setGravity(Gravity.CENTER); buttonCon.setPadding(0,100,0,220);
 
             //Skapa alla knappar (button1, osv)
             initializeAnswerButtons(theCatJSON);
@@ -200,6 +209,8 @@ public class StartGameActivity extends AppCompatActivity {
             //TODO countdownbar för tiden
             countdown = new TextView(main.getContext()); //countdown.setHeight(280);
             countdown.setGravity(Gravity.CENTER); countdown.setTextSize(24);
+            countdown.setPadding(0,50,0,10);
+            countdown.setTypeface(tf);
 
             mCountDownTimer = new CountDownTimer(15000,1000) {
                 @Override
@@ -266,6 +277,7 @@ public class StartGameActivity extends AppCompatActivity {
             //Skapa spänning med en timout
             tension = new CountDownTimer(600, 5)
             {
+                Typeface tf = Typeface.createFromAsset(getBaseContext().getAssets(), "fonts/amaranth.ttf");
                 public void onTick(long millisUntilFinished) {
                     setButtonsClickable(false);
                     v.setPressed(true);
@@ -275,6 +287,7 @@ public class StartGameActivity extends AppCompatActivity {
                         v.setPressed(false);
                         v.setSelected(true);
                         countdown.setText("Rätt svar!");
+                        countdown.setTextColor(Color.parseColor("#207C20"));
                         numCorrect[subjectNum]++;
                     } else {
                         v.setPressed(true);
@@ -303,6 +316,7 @@ public class StartGameActivity extends AppCompatActivity {
     };
 
     private void labelIncorrectAnswer() {
+        Typeface tf = Typeface.createFromAsset(getBaseContext().getAssets(), "fonts/amaranth.ttf");
 
         String correctAnswer = null;
         try {
@@ -311,18 +325,21 @@ public class StartGameActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        if(button1.getText().equals(correctAnswer))
+        if (button1.getText().equals(correctAnswer))
             button1.setSelected(true);
-        else if(button2.getText().equals(correctAnswer))
+        else if (button2.getText().equals(correctAnswer))
             button2.setSelected(true);
-        else if(button3.getText().equals(correctAnswer))
+        else if (button3.getText().equals(correctAnswer))
             button3.setSelected(true);
-        else if(button4.getText().equals(correctAnswer))
+        else if (button4.getText().equals(correctAnswer))
             button4.setSelected(true);
-        if(timeOut)
+        if (timeOut){
             countdown.setText("Tiden är ute!");
+            countdown.setTextColor(Color.parseColor("#B22E2E"));
+    }
         else
             countdown.setText("Fel svar!");
+            countdown.setTextColor(Color.parseColor("#B22E2E"));
     }
 
     private void continueTheGame() {

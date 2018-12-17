@@ -165,7 +165,7 @@ public class StartGameActivity extends AppCompatActivity {
             //Skapa linearlayout för skärmen
             c = new LinearLayout(main.getContext());
             c.setOrientation(LinearLayout.VERTICAL); c.setGravity(Gravity.CENTER);
-            c.setPadding(0, 150,0,0);
+            c.setPadding(10, 150,10,0);
             c.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
